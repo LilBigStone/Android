@@ -19,20 +19,12 @@ class FreeActivity extends AppCompatActivity {
     MainViewModel model;
     float measure_value = 0;
     String stringArrayValue = "length";
-    Spinner measureInput;
     Spinner spOutput;
     Spinner spInput;
 
     ArrayAdapter<String> american_length_Adapter;
     ArrayAdapter<String> world_length_Adapter;
 
-    ArrayAdapter<String> american_weigh_Adapter;
-    ArrayAdapter<String> world_weigh_Adapter;
-
-    ArrayAdapter<String> american_volume_Adapter;
-    ArrayAdapter<String> world_volume_Adapter;
-
-    ArrayAdapter<String> measureAdapter;
 
 
     @Override
@@ -57,37 +49,19 @@ class FreeActivity extends AppCompatActivity {
         }
         });
 
-        measureInput = (Spinner)findViewById(R.id.measure_spinner) ;
         spOutput = (Spinner)findViewById(R.id.output_spinner);
         spInput = (Spinner)findViewById(R.id.input_spinner);
 
         american_length_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_length));
         world_length_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_length));
 
-        american_weigh_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_weigh));
-        world_weigh_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_weigh));
-
-        american_volume_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_volume));
-        world_volume_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_volume));
-
-
-        measureAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.measure));
-
-
-        measureAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         american_length_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         world_length_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        american_weigh_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        world_weigh_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        american_volume_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        world_volume_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        measureInput.setAdapter(measureAdapter);
         spOutput.setAdapter(american_length_Adapter);
         spInput.setAdapter(world_length_Adapter);
 
-        measureInput.setOnItemSelectedListener(onMeasureItemSelectedListener());
         spOutput.setOnItemSelectedListener(onAmericanItemSelectedListener());
         spInput.setOnItemSelectedListener(onWorldItemSelectedListener());
 
@@ -112,38 +86,6 @@ class FreeActivity extends AppCompatActivity {
                                 break;
                             case (3):
                                 measure_value = (float) 39.3701;
-                                break;
-                        }
-                        break;
-                    case("weight"):
-                        switch (position){
-                            case (0):
-                                measure_value = (float) 0.00110231250142;
-                                break;
-                            case (1):
-                                measure_value = (float) 0.15747321;
-                                break;
-                            case (2):
-                                measure_value = (float) 2.204625002841;
-                                break;
-                            case (3):
-                                measure_value = (float) 35.274;
-                                break;
-                        }
-                        break;
-                    case("volume"):
-                        switch (position){
-                            case (0):
-                                measure_value = (float) 3.78541;
-                                break;
-                            case (1):
-                                measure_value = (float) 0.946353;
-                                break;
-                            case (2):
-                                measure_value = (float) 0.473176;
-                                break;
-                            case (3):
-                                measure_value = (float) 0.24;
                                 break;
                         }
                         break;
@@ -183,42 +125,6 @@ class FreeActivity extends AppCompatActivity {
 
                         }
                         break;
-                    case("weight"):
-                        switch (position){
-                            case (0):
-                                measure_value *= (float) 0.001;
-                                break;
-                            case (1):
-                                measure_value *= (float) 100;
-                                break;
-                            case (2):
-                                measure_value *= (float) 1;
-                                break;
-                            case (3):
-                                measure_value *= (float) 1000;
-                                break;
-
-                        }
-                        break;
-
-                    case("volume"):
-                        switch (position){
-                            case (0):
-                                measure_value *= (float) 1000;
-                                break;
-                            case (1):
-                                measure_value *= (float) 1;
-                                break;
-                            case (2):
-                                measure_value *= (float) 0.9;
-                                break;
-                            case (3):
-                                measure_value *= (float) 0.001;
-                                break;
-
-                        }
-                        break;
-
 
                 }
 
@@ -242,16 +148,6 @@ class FreeActivity extends AppCompatActivity {
                         stringArrayValue = "length";
                         spOutput.setAdapter(american_length_Adapter);
                         spInput.setAdapter(world_length_Adapter);
-                        break;
-                    case (1):
-                        stringArrayValue = "weight";
-                        spOutput.setAdapter(american_weigh_Adapter);
-                        spInput.setAdapter(world_weigh_Adapter);
-                        break;
-                    case (2):
-                        stringArrayValue = "volume";
-                        spOutput.setAdapter(american_volume_Adapter);
-                        spInput.setAdapter(world_volume_Adapter);
                         break;
 
                 }
