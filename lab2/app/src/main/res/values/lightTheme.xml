@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DayLightTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:statusBarColor">#B9E4C9</item>
+        <item name="colorPrimary">#356859</item>
+        <item name="colorPrimaryVariant">#f9AA33</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#f9AA33</item>
+        <item name="colorSecondaryVariant">#f9AA33</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorSurface">#B9E4C9</item>
+        <item name="colorOnSecondary">#B9E4C9</item>
+        <item name="colorOnPrimary">#B9E4C9</item>
+        <item name="android:colorBackground">#B9E4C9</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

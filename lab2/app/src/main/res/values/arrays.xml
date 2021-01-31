@@ -1,0 +1,22 @@
+<resources>
+    <array name="theme_display">
+        <item>@string/night</item>
+        <item>@string/light</item>
+    </array>
+    <array name="theme_internal">
+        <item>Night</item>
+        <item>Light</item>
+    </array>
+
+    <array name="locale_display">
+        <item>@string/ru</item>
+        <item>@string/eng</item>
+    </array>
+
+    <array name="locale_internal">
+        <item>Ru</item>
+        <item>Eng</item>
+    </array>
+
+
+</resources>

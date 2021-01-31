@@ -1,0 +1,35 @@
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/theme">
+
+        <DropDownPreference
+            android:entries="@array/theme_display"
+            android:entryValues="@array/theme_internal"
+            android:key="theme"
+            android:title="@string/theme"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/locale">
+
+        <DropDownPreference
+            android:entries="@array/locale_display"
+            android:entryValues="@array/locale_internal"
+            android:key="locale"
+            android:title="@string/locale"
+            app:allowDividerAbove="true"
+            app:allowDividerBelow="true"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/my_data">
+        <Preference
+            android:key="@string/my_data"
+            android:title="@string/my_data" />
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>
