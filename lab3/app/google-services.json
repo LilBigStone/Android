@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "513746308801",
+    "firebase_url": "https://tic-tac-698d0-default-rtdb.firebaseio.com",
+    "project_id": "tic-tac-698d0",
+    "storage_bucket": "tic-tac-698d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513746308801:android:6a1c908b00fee49d9c4e40",
+        "android_client_info": {
+          "package_name": "com.karpov.lab3"
+        }
+      },z
+      "oauth_client": [
+        {
+          "client_id": "513746308801-j0pacs6qat9ubsifhc2et7d1vevp394r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxWteMJ1a1j1NwmKIWb9nZPUmNocDD5h0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513746308801-j0pacs6qat9ubsifhc2et7d1vevp394r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

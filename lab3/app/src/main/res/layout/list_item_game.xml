@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="nucleus"
+            type="com.karpov.lab3.others.Nucleus" />
+
+        <variable
+            name="clickListener"
+            type="com.karpov.lab3.game.GameListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/drawble"
+        android:onClick="@{() -> clickListener.onClick(nucleus)}"
+        android:orientation="vertical"
+        android:textSize="16sp">
+
+        <TextView
+            android:id="@+id/quality_string"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="60sp"
+            android:text="X"
+            app:nucleus="@{nucleus}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
