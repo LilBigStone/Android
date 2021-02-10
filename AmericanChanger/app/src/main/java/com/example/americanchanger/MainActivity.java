@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String versionName = BuildConfig.VERSION_NAME;
+        System.out.println(versionName);
+        final TextView versionNameTextView1 = (TextView) findViewById(R.id.textView1);
+        versionNameTextView1.setText(versionName);
+
         model = ViewModelProviders.of(this).get(MainViewModel.class);
 
         model.EU_live_data.observe(this, new Observer<String>() {

@@ -21,6 +21,7 @@ class FreeActivity extends AppCompatActivity {
     String stringArrayValue = "length";
     Spinner spOutput;
     Spinner spInput;
+    TextView versionNameTextView;
 
     ArrayAdapter<String> american_length_Adapter;
     ArrayAdapter<String> world_length_Adapter;
@@ -31,6 +32,12 @@ class FreeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String versionName = BuildConfig.VERSION_NAME;
+        System.out.println(versionName);
+        final TextView versionNameTextView1 = (TextView) findViewById(R.id.textView1);
+        versionNameTextView1.setText(versionName);
+
 
         model = ViewModelProviders.of(this).get(MainViewModel.class);
 
@@ -162,6 +169,8 @@ class FreeActivity extends AppCompatActivity {
     }
 
     public void btnAddDigit(View v){
+
+
 
         Button digit_btn = (Button)v;
 
