@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
-//apply from: '../git.gradle'
-//def versionArray = getArray()
+
 
 
 
@@ -34,16 +33,25 @@ def getVersionName = { ->
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     flavorDimensions 'default'
 
+    productFlavors.all {
+        buildConfigField 'boolean', 'IS_DEMO', 'true'
+    }
+
     productFlavors {
+
+
         Premium {
+
+            buildConfigField 'boolean', 'IS_DEMO', 'false'
             dimension 'default'
             versionName getVersionName() + "-prem"
         }
         Free {
+            buildConfigField 'boolean', 'IS_DEMO', 'true'
             dimension 'default'
             versionName getVersionName() + "-free"
         }
@@ -53,18 +61,18 @@ android {
         applicationId "com.example.americanchanger"
         minSdkVersion 16
         targetSdkVersion 30
-
         versionCode getVersionCode()
-
         versionName getVersionName()
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "IS_DEMO", "true"
         }
     }
     sourceSets {

@@ -4,11 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import com.example.americanchanger.BuildConfig;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
     Spinner measureInput;
     Spinner spOutput;
     Spinner spInput;
+
+
+
+
     boolean check = true;
-    ArrayAdapter<String> american_length_Adapter;
-    ArrayAdapter<String> world_length_Adapter;
 
     ArrayAdapter<String> american_weigh_Adapter;
     ArrayAdapter<String> world_weigh_Adapter;
@@ -34,17 +36,26 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> world_volume_Adapter;
 
     ArrayAdapter<String> measureAdapter;
+    ArrayAdapter<String> american_length_Adapter;
+    ArrayAdapter<String> world_length_Adapter;
+    boolean demo_check;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        demo_check = BuildConfig.IS_DEMO;
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String versionName = BuildConfig.VERSION_NAME;
-        System.out.println(versionName);
-        final TextView versionNameTextView1 = (TextView) findViewById(R.id.textView1);
-        versionNameTextView1.setText(versionName);
+        if(demo_check){
+            Spinner changeVisible = (Spinner)findViewById(R.id.measure_spinner);
+            changeVisible.setVisibility(View.INVISIBLE);
+        }
 
         model = ViewModelProviders.of(this).get(MainViewModel.class);
 
@@ -63,37 +74,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        measureInput = (Spinner)findViewById(R.id.measure_spinner) ;
+        if(!demo_check){
+            measureInput = (Spinner)findViewById(R.id.measure_spinner);
+            american_weigh_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_weigh));
+            world_weigh_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_weigh));
+
+            american_volume_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_volume));
+            world_volume_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_volume));
+
+            measureAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.measure));
+
+            measureAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            american_weigh_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            world_weigh_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            american_volume_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            world_volume_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            measureInput.setAdapter(measureAdapter);
+            measureInput.setOnItemSelectedListener(onMeasureItemSelectedListener());
+        }
+
         spOutput = (Spinner)findViewById(R.id.output_spinner);
         spInput = (Spinner)findViewById(R.id.input_spinner);
 
         american_length_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_length));
         world_length_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_length));
 
-        american_weigh_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_weigh));
-        world_weigh_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_weigh));
-
-        american_volume_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.american_volume));
-        world_volume_Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.world_volume));
-
-
-        measureAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.measure));
-
-
-        measureAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         american_length_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         world_length_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        american_weigh_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        world_weigh_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        american_volume_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        world_volume_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        measureInput.setAdapter(measureAdapter);
         spOutput.setAdapter(american_length_Adapter);
         spInput.setAdapter(world_length_Adapter);
 
-        measureInput.setOnItemSelectedListener(onMeasureItemSelectedListener());
+
         spOutput.setOnItemSelectedListener(onAmericanItemSelectedListener());
         spInput.setOnItemSelectedListener(onWorldItemSelectedListener());
 
@@ -104,128 +117,121 @@ public class MainActivity extends AppCompatActivity {
         return new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (stringArrayValue){
-                    case("length"):
-                        switch (position){
+                switch (stringArrayValue) {
+                    case ("length"):
+                        switch (position) {
                             case (0):
-                                if(check){
+                                if (check) {
                                     measure_value = (float) 0.000621371;
-                                }
-                                else{
-                                    measure_value = (float)(1/0.000621371) ;
+                                } else {
+                                    measure_value = (float) (1 / 0.000621371);
                                 }
 
                                 break;
                             case (1):
-                                if(check){
-                                    measure_value = (float) 1.09361296;;
-                                }
-                                else{
-                                    measure_value = (float)(1/1.09361296) ;
+                                if (check) {
+                                    measure_value = (float) 1.09361296;
+                                    ;
+                                } else {
+                                    measure_value = (float) (1 / 1.09361296);
                                 }
 
 
                                 break;
                             case (2):
-                                if(check){
-                                    measure_value = (float) 3.28084;;
-                                }
-                                else{
-                                    measure_value = (float)(1/3.28084) ;
+                                if (check) {
+                                    measure_value = (float) 3.28084;
+                                    ;
+                                } else {
+                                    measure_value = (float) (1 / 3.28084);
                                 }
 
 
                                 break;
                             case (3):
-                                if(check){
-                                    measure_value = (float) 39.3701;;
-                                }
-                                else{
-                                    measure_value = (float)(1/39.3701) ;
+                                if (check) {
+                                    measure_value = (float) 39.3701;
+                                    ;
+                                } else {
+                                    measure_value = (float) (1 / 39.3701);
                                 }
 
 
                                 break;
                         }
                         break;
-                    case("weight"):
-                        switch (position){
-                            case (0):
-                                if(check){
-                                    measure_value = (float) 0.00110231250142;
-                                }
-                                else{
-                                    measure_value = (float)(1/0.00110231250142) ;
-                                }
 
-                                break;
-                            case (1):
-                                if(check){
-                                    measure_value = (float) 0.15747321;
-                                }
-                                else{
-                                    measure_value = (float)(1/0.15747321) ;
-                                }
+                        case ("weight"):
+                            switch (position) {
+                                case (0):
+                                    if (check) {
+                                        measure_value = (float) 0.00110231250142;
+                                    } else {
+                                        measure_value = (float) (1 / 0.00110231250142);
+                                    }
 
-                                break;
-                            case (2):
-                                if(check){
-                                    measure_value = (float) 2.204625002841;
-                                }
-                                else{
-                                    measure_value = (float)(1/2.204625002841) ;
-                                }
+                                    break;
+                                case (1):
+                                    if (check) {
+                                        measure_value = (float) 0.15747321;
+                                    } else {
+                                        measure_value = (float) (1 / 0.15747321);
+                                    }
 
-                                break;
-                            case (3):
-                                if(check){
-                                    measure_value = (float) 35.274;
-                                }
-                                else{
-                                    measure_value = (float)(1/35.274) ;
-                                }
+                                    break;
+                                case (2):
+                                    if (check) {
+                                        measure_value = (float) 2.204625002841;
+                                    } else {
+                                        measure_value = (float) (1 / 2.204625002841);
+                                    }
 
-                                break;
-                        }
-                        break;
-                    case("volume"):
-                        switch (position){
-                            case (0):
-                                if(check){
-                                    measure_value = (float) 3.78541;
-                                }
-                                else{
-                                    measure_value = (float)(1/3.78541) ;
-                                }
+                                    break;
+                                case (3):
+                                    if (check) {
+                                        measure_value = (float) 35.274;
+                                    } else {
+                                        measure_value = (float) (1 / 35.274);
+                                    }
 
-                                break;
-                            case (1):
-                                if(check){
-                                    measure_value = (float) 0.946353;
-                                }
-                                else{
-                                    measure_value = (float)(1/0.946353) ;
-                                }
+                                    break;
+                            }
+                            break;
+                        case ("volume"):
+                            switch (position) {
+                                case (0):
+                                    if (check) {
+                                        measure_value = (float) 3.78541;
+                                    } else {
+                                        measure_value = (float) (1 / 3.78541);
+                                    }
 
-                                break;
-                            case (2):
-                                if(check){
-                                    measure_value = (float) 0.473176;
-                                }
-                                else{
-                                    measure_value = (float)(1/0.473176) ;
-                                }
-                                break;
-                            case (3):
-                                if(check){
-                                    measure_value = (float) 0.24;
-                                }
-                                else{
-                                    measure_value = (float)(1/0.24) ;
-                                }
-                                break;
-                        }
-                        break;
+                                    break;
+                                case (1):
+                                    if (check) {
+                                        measure_value = (float) 0.946353;
+                                    } else {
+                                        measure_value = (float) (1 / 0.946353);
+                                    }
+
+                                    break;
+                                case (2):
+                                    if (check) {
+                                        measure_value = (float) 0.473176;
+                                    } else {
+                                        measure_value = (float) (1 / 0.473176);
+                                    }
+                                    break;
+                                case (3):
+                                    if (check) {
+                                        measure_value = (float) 0.24;
+                                    } else {
+                                        measure_value = (float) (1 / 0.24);
+                                    }
+                                    break;
+                            }
+                            break;
+
                 }
 
             }
@@ -327,13 +333,19 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case (1):
                         stringArrayValue = "weight";
-                        spOutput.setAdapter(american_weigh_Adapter);
-                        spInput.setAdapter(world_weigh_Adapter);
+                        if(!demo_check){
+                            spOutput.setAdapter(american_weigh_Adapter);
+                            spInput.setAdapter(world_weigh_Adapter);
+                        }
+
                         break;
                     case (2):
                         stringArrayValue = "volume";
-                        spOutput.setAdapter(american_volume_Adapter);
-                        spInput.setAdapter(world_volume_Adapter);
+                        if(!demo_check){
+                            spOutput.setAdapter(american_volume_Adapter);
+                            spInput.setAdapter(world_volume_Adapter);
+                        }
+
                         break;
 
                 }
