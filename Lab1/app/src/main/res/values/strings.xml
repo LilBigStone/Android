@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">lab1</string>
+    <string name="delete">←</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string name="swap">swap</string>
+
+    <string-array name="main">
+        <item>Speed</item>
+        <item>Length</item>
+        <item>Weight</item>
+    </string-array>
+    <string-array name="americanLength">
+        <item>Mile</item>
+        <item>Yard</item>
+        <item>Foot</item>
+        <item>Inch</item>
+    </string-array>
+    <string-array name="americanWeight">
+        <item>Ounce</item>
+        <item>Pound</item>
+        <item>Stone</item>
+    </string-array>
+    <string-array name="wordWeight">
+        <item>Kilogram</item>
+        <item>Gram</item>
+        <item>Milligram</item>
+    </string-array>
+    <string-array name="wordLength">
+        <item>Kilometers</item>
+        <item>Meters</item>
+        <item>Centimeters</item>
+        <item>Millimeters</item>
+    </string-array>
+    <string-array name="wordSpeed">
+        <item>km/h</item>
+        <item>m/s</item>
+    </string-array>
+    <string-array name="americanSpeed">
+        <item>mi/h</item>
+        <item>ft/s</item>
+        <item>Knot</item>
+    </string-array>
+</resources>
