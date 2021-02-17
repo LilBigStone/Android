@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.karpov.lab1.converter.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        tools:context=".num.NumFragment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.228">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints">
+
+                <Button
+                    android:id="@+id/btn_ad_1"
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:onClick="@{()-> mainViewModel.button('1')}"
+                    android:text="1"
+                    android:scaleType="fitCenter"
+                     />
+
+                <Button
+                    android:id="@+id/btn_ad_2"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:onClick="@{()-> mainViewModel.button('2')}"
+                    android:scaleType="fitCenter"
+
+                    android:text="2"
+                    android:textSize="35sp" />
+
+                <Button
+                    android:id="@+id/btn_ad_3"
+                    
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    
+                    android:onClick="@{()-> mainViewModel.button('3')}"
+                    android:text="3"
+                    android:scaleType="fitCenter"
+                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                tools:ignore="MissingConstraints">
+
+                <Button
+                    android:id="@+id/btn_ad_4"
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    
+                    android:onClick="@{()-> mainViewModel.button('4')}"
+                    android:text="4"
+                    android:scaleType="fitCenter"
+                     />
+
+                <Button
+                    android:id="@+id/btn_ad_5"
+                    android:text="5"
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_marginHorizontal="10dp"
+                    android:scaleType="fitCenter"
+                    android:onClick="@{()-> mainViewModel.button('5')}"
+                     />
+
+                <Button
+                    android:id="@+id/btn_ad_6"
+                    
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    
+                    android:onClick="@{()-> mainViewModel.button('6')}"
+                    android:text="6"
+                    android:scaleType="fitCenter"
+                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_ad_7"
+                    
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    
+                    android:onClick="@{()-> mainViewModel.button('7')}"
+                    android:text="7"
+                    android:scaleType="fitCenter"
+                    />
+
+                <Button
+                    android:id="@+id/btn_ad_8"
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:onClick="@{()-> mainViewModel.button('8')}"
+                    android:text="8"
+                    android:scaleType="fitCenter"
+                     />
+
+                <Button
+                    android:id="@+id/btn_ad_9"
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:onClick="@{()-> mainViewModel.button('9')}"
+                    android:text="9"
+                    android:scaleType="fitCenter"
+                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_c"
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:onClick="@{()-> mainViewModel.clear()}"
+                    android:text="C"
+                    android:scaleType="fitCenter"
+                    />
+
+                <Button
+                    android:id="@+id/btn_ad_0"
+                    android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:onClick="@{()-> mainViewModel.button('0')}"
+                    android:text="0"
+                    android:scaleType="fitCenter"
+                     />
+
+                <Button
+                    android:id="@+id/btn_back"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                    android:onClick="@{()-> mainViewModel.delete()}"
+                    android:text="⌫"
+                    android:gravity="center"
+                    android:textSize="35sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_ad_dot"
+                android:textSize="35sp"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_horizontal"
+                android:onClick="@{()-> mainViewModel.dot()}"
+                android:text="." />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

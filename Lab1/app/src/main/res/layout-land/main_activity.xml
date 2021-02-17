@@ -1,0 +1,21 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/titleFragment"
+            android:name="com.karpov.lab1.converter.MainFragment"
+            android:layout_width="365dp"
+            android:layout_height="match_parent" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/titleFragment1"
+            android:name="com.karpov.lab1.converter.NumPadFragment"
+            android:layout_width="365dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</layout>

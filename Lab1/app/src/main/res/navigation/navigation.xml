@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainActivity">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.karpov.lab1.converter.MainFragment"
+        android:label="MainFragment" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.karpov.lab1.MainActivity"
+        android:label="MainActivity" />
+    <fragment
+        android:id="@+id/numPadFragment"
+        android:name="com.karpov.lab1.converter.NumPadFragment"
+        android:label="NumPadFragment" />
+</navigation>

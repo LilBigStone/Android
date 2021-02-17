@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".converter.MainFragment">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:gravity="right"
+            android:hint="@string/to"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,RtlHardcoded">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/american_val"
+                android:layout_width="140dp"
+                android:focusable="false"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="124dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:gravity="left"
+            android:hint="@string/from"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints,RtlHardcoded">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/world_val"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:textIsSelectable="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/output_spinner"
+            android:layout_width="140dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="96dp"
+            android:focusable="false"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/reply_black_800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.86"
+            app:layout_constraintStart_toEndOf="@+id/input_spinner"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Spinner
+            android:id="@+id/measure_spinner"
+            android:layout_width="140dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="40dp"
+            android:entries="@array/main"
+            android:focusable="false"
+            android:outlineAmbientShadowColor="@color/reply_black_800"
+            android:outlineSpotShadowColor="@color/reply_black_800"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/reply_black_800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/input_spinner"
+            android:layout_width="140dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="96dp"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/reply_black_800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/swap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/swap"
+            android:foregroundGravity="center"
+            app:layout_constraintEnd_toStartOf="@+id/textInputLayout"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toEndOf="@+id/outlinedTextField"
+            app:layout_constraintTop_toTopOf="@+id/outlinedTextField"
+            app:srcCompat="@drawable/swap"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
